@@ -1,5 +1,5 @@
 //
-//  LoadMoreTableFooterViewDelegate.swift
+//  LoadMoreTableFooterView.swift
 //  LoadMoreTableFooterView-for-swift
 //
 //  Created by zhang on 14-6-18.
@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 let TEXT_COLOR: UIColor = UIColor(red: 87.0 / 255.0, green: 108.0 / 255.0, blue: 137.0 / 255.0, alpha: 1.0)
-let FLIP_ANIMATION_DURATION: Float = 0.18
 
 enum LoadMoreState{
     case LoadMorePulling
@@ -73,9 +72,7 @@ class LoadMoreTableFooterView: UIView {
             statusLabel.text = ""
         }
         state = aState
-        
     }
-    
 
     func loadMoreScrollViewDidScroll(loadScrollView: UIScrollView) {
 
