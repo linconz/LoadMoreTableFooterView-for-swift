@@ -28,7 +28,7 @@ class LoadMoreTableFooterView: UIView {
     var statusLabel: UILabel                        = UILabel()
     var activityView: UIActivityIndicatorView       = UIActivityIndicatorView()
     
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
@@ -53,6 +53,10 @@ class LoadMoreTableFooterView: UIView {
         self.hidden = true
         
         setState(LoadMoreState.LoadMoreNormal)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setState(aState: LoadMoreState) {
@@ -109,7 +113,7 @@ class LoadMoreTableFooterView: UIView {
     
     func loadMoreScrollViewDidEndDragging(loadScrollView: UIScrollView) {
         var loading = false
-        if delegate {
+        if (delegate != nil) {
             loading = delegate!.loadMoreTableFooterDataSourceIsLoading(self)
         }
 

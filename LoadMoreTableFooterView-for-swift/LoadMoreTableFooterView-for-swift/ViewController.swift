@@ -12,14 +12,16 @@ import UIKit
 let PAGESIZE: Int = 20
 
 class ViewController: UIViewController, LoadMoreTableFooterViewDelegate {
+
     
-    @IBOutlet var tableView: UITableView
+    @IBOutlet var tableView: UITableView!
     
     var loadMoreFooterView: LoadMoreTableFooterView?
     var loadingMore: Bool = false
     var loadingMoreShowing: Bool = false
 
-    var datas: String[] = []
+    var datas: [String] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class ViewController: UIViewController, LoadMoreTableFooterViewDelegate {
             loadMoreFooterView = LoadMoreTableFooterView(frame: CGRectMake(0, tableView.contentSize.height, tableView.frame.size.width, tableView.frame.size.height))
             loadMoreFooterView!.delegate = self
             loadMoreFooterView!.backgroundColor = UIColor.clearColor()
-            tableView.addSubview(loadMoreFooterView)
+            tableView.addSubview(loadMoreFooterView!)
         }
         delayLoadFinish()
     }
@@ -52,10 +54,10 @@ class ViewController: UIViewController, LoadMoreTableFooterViewDelegate {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as? UITableViewCell
         
-        if !cell {
+        if !(cell != nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         }
-        cell!.textLabel.text = datas[indexPath.row]
+        cell!.textLabel!.text = datas[indexPath.row]
         
         return cell
         
@@ -81,7 +83,7 @@ class ViewController: UIViewController, LoadMoreTableFooterViewDelegate {
         }
         for index in 1 ... 20 {
             var string = "test data \(rand())"
-            datas += string
+            datas += [string];
         }
         tableView.reloadData()
     }
